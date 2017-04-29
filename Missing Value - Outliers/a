@@ -3,5 +3,7 @@ Function(Dataset)
 Find number of missing values
 Find proportion of missing values
 
+Find number of outliers on upper and lower side 
+
 return(Table with above details for all variables )
 }
