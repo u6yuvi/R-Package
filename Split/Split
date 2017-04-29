@@ -4,6 +4,7 @@ Check for each variable: Numerical or Categorical or Eliminate
 User prompt:Want to keep numerical or categorical or Eliminate
 Give suggestion based on unique values in a variable
 
+
 return(Updates Dataset)
 }
 
