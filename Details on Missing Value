@@ -1,6 +1,0 @@
-Function(Dataset)
-{
-Find number of missing values
-Find proportion of missing values
-return(Table with above details for all variables )
-}
