@@ -1,0 +1,10 @@
+Function(Dataset$Variable)
+{
+
+Skewness
+Kurtosis
+
+
+return(Details for each variable)
+}
+
