@@ -1,0 +1,4 @@
+Function(Dataset)
+{For each response variable find the best transformation required with predictor variables
+Use Boxcox
+
