@@ -4,7 +4,6 @@ Analysis for each variable
 Display:X1 variable contains x% missing values
 Suggestion:Imputation method
 Warning message:Outliers,Skewness
-
 Run functions based on user prompt
 }
 
