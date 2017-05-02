@@ -1,9 +1,22 @@
-Function(Dataset)
-{
-Find number of missing values
-Find proportion of missing values
+FindNum <- function(data1){
+  data1 <- as.data.table(data1)
+  
+  Missing <- data1[,.(VariableName=names(data1),NumberofNA=lapply(data1, function(x) sum(is.na(x))),
+                      PercentofNA=lapply(data1, function(x) (round(sum(is.na(x)*100/nrow(data1)),2))),
+                      No_Of_Outliers= lapply(data1,function(x) sum(x>Upper_Bound(x),na.rm = TRUE) + 
+                                               sum(x<Lower_Bound(x),na.rm = TRUE))
+                      )]
+  return(Missing)
+  
+}
+ 
 
-Find number of outliers on upper and lower side 
+Upper_Bound <- function(u){
+  ub = min(max(u,na.rm = TRUE),quantile(u,0.75,na.rm=TRUE)+ (1.5 *IQR(u,na.rm=TRUE)))
+  return(ub)
+}
 
-return(Table with above details for all variables )
+Lower_Bound <- function(l){
+  lb = max(min(l,na.rm = TRUE),quantile(l,0.25,na.rm=TRUE)- (1.5 *IQR(l,na.rm=TRUE)))
+  return(lb)
 }
