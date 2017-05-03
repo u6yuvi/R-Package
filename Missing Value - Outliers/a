@@ -3,8 +3,8 @@ FindNum <- function(data1){
   
   Missing <- data1[,.(VariableName=names(data1),NumberofNA=lapply(data1, function(x) sum(is.na(x))),
                       PercentofNA=lapply(data1, function(x) (round(sum(is.na(x)*100/nrow(data1)),2))),
-                      No_Of_Outliers= lapply(data1,function(x) sum(x>Upper_Bound(x),na.rm = TRUE) + 
-                                               sum(x<Lower_Bound(x),na.rm = TRUE))
+                      No_Of_Outliers_UB= lapply(data1,function(x) sum(x>Upper_Bound(x),na.rm = TRUE)),
+                      No_Of_Outliers_LB= lapply(data1,function(x) sum(x<Lower_Bound(x),na.rm = TRUE))
                       )]
   return(Missing)
   
