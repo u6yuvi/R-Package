@@ -10,7 +10,6 @@ FindNum <- function(data1){
   
 }
  
-
 Upper_Bound <- function(u){
   ub = min(max(u,na.rm = TRUE),quantile(u,0.75,na.rm=TRUE)+ (1.5 *IQR(u,na.rm=TRUE)))
   return(ub)
