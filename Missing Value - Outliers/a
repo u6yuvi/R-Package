@@ -1,3 +1,12 @@
+setwd("F:/Praxis/R files")
+fram <- read.csv("framingham.csv")
+
+library(VIM)
+library(data.table)
+info <- FindNum(fram)
+info
+
+#missing values,proportion of missing values and number of outliers on upper and lower side
 FindNum <- function(data1){
   data1 <- as.data.table(data1)
   
@@ -5,11 +14,18 @@ FindNum <- function(data1){
                       PercentofNA=lapply(data1, function(x) (round(sum(is.na(x)*100/nrow(data1)),2))),
                       No_Of_Outliers_UB= lapply(data1,function(x) sum(x>Upper_Bound(x),na.rm = TRUE)),
                       No_Of_Outliers_LB= lapply(data1,function(x) sum(x<Lower_Bound(x),na.rm = TRUE))
-                      )]
+  )]
+  
+  mice_plot <- aggr(data1, col = c('blue', 'green'),
+                    numbers = T, sortVars = T,
+                    labels = names(data1), cex.axis = 0.7,
+                    gap = 4, ylab = c("Missing Values", "Pattern"))
+  
   return(Missing)
   
 }
- 
+
+
 Upper_Bound <- function(u){
   ub = min(max(u,na.rm = TRUE),quantile(u,0.75,na.rm=TRUE)+ (1.5 *IQR(u,na.rm=TRUE)))
   return(ub)
